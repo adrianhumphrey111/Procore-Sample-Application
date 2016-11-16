@@ -2,8 +2,8 @@
 //  Algorithm.swift
 //  Sieve of Eratosthenes
 //
-//  Created by Computer Science on 11/12/16.
-//  Copyright © 2016 Computer Science. All rights reserved.
+//  Created by Adrian Humphrey on 11/12/16.
+//  Copyright © 2016 Adrian Humphrey. All rights reserved.
 //
 
 import Foundation
@@ -34,8 +34,12 @@ class Algorithm{
     //Timer2
     var myTimer2: Timer
     
+    //Timer 3
+    var mytimer3: Timer
+    
     //variable that will hold the squareroot of n
     var n: Int?
+    
     
     
     //Initialization
@@ -46,6 +50,7 @@ class Algorithm{
         //Set up Tiemrs
         myTimer = Timer()
         myTimer2 = Timer()
+        mytimer3 = Timer()
   
         //Fill color array
         fillcolorArray()
@@ -127,45 +132,14 @@ class Algorithm{
         
         self.intArray = primes
         
-        self.myTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(animatesPrimes), userInfo: nil, repeats: false)
+        //TODO: call this as soon as the user presses eneter with the number that they inputed
+        self.myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(animateNonPrimes), userInfo: nil, repeats: false)
 
         
         
        
     }
     
-    //Changes the view to different colors , 10 different colors for 2 - 11, calls a delegate method to change view's colors
-    func animateViews(first: Bool, number: Int, i: Int){
-        
-        //If this is the first prime number, change its color, delay then change the rest
-        if first{
-            if number < 8{
-                
-                delegate?.changeViewColor(number, color: colorArray[i])
-                
-                //Wait 1 second then change the color
-                let when = DispatchTime.now() + 1
-                DispatchQueue.main.asyncAfter(deadline: when){
-                    //testView.changeColor(color: UIColor.red)
-                }
-                
-            }
-            
-        }
-        else{
-            //Grab the color of what the first color was
-            
-            delegate?.changeViewColor(number, color: colorArray[i])
-            //Wait 1 second then change the color
-            let when = DispatchTime.now() + 1
-            DispatchQueue.main.asyncAfter(deadline: when){
-                //testView.changeColor(color: UIColor.red)
-            }
-            
-        }
-        
-        
-    }
     
     //Find the square root, round down
     func findClosetRoot(number: Double) -> Int{
@@ -219,26 +193,29 @@ class Algorithm{
     
     @objc func animateNonPrimes(){
         
-        //Animate all of the multiples a ceratin number, then go ontop the next one and jsut skip numbers that are in primes
-       
-        myTimer2 = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
-            //<#code#>
-        })
+        //Timer count
+        var timerCount = 0
+        //A for loop with different timers that will call animateMultiple right after one is done
+        if let n = self.n{
+            for i in self.intArray{
+                print(i)
+                let interval: Double = Double(timerCount * 2)
+            
+                    myTimer2 = Timer.scheduledTimer(withTimeInterval:interval, repeats: false, block: { (timer) in
+                        self.animateMultipile(i: i)
+                        
+                    })
+                timerCount+=1
+                if i == n{
+                    return
+                }
+            }
     }
     
     
-   @objc func animatesPrimes(){
+   func animatesPrimes(){
     
-    //A for loop with different timers that will call animateMultiple right after one is done
-    if let n = self.n{
-        for i in 2...n{
-            let interval: Double = Double(i * 3)
-            myTimer2 = Timer.scheduledTimer(withTimeInterval:interval, repeats: false, block: { (timer) in
-                 self.animateMultipile(i: i)
-            })
-           
-            
-        }
+    
 
     }
     
@@ -246,9 +223,23 @@ class Algorithm{
     }
     
     func animateMultipile(i: Int){
+        //Calculate how many multiples there are in the array
         
         //Animate the first multiple
-        delegate?.changeViewColor(i, color: UIColor.orange)
+        delegate?.changeViewColor(i, color: self.colorArray[i - 2])
+        
+        //Delay for a half a second then animate every mulitple of
+   
+            for j in i...self.n! * self.n!{
+                
+                mytimer3 = Timer.scheduledTimer(withTimeInterval: , repeats: false, block: { (timer) in
+                    self.delegate?.changeViewColor(i * j, color: self.colorArray[i - 2])
+                    timer.invalidate()
+                })
+                
+            }
+           
+        
         
     }
     

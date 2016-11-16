@@ -2,8 +2,8 @@
 //  SquareView.swift
 //  Sieve of Eratosthenes
 //
-//  Created by Computer Science on 11/13/16.
-//  Copyright © 2016 Computer Science. All rights reserved.
+//  Created by Adrian Humphrey on 11/13/16.
+//  Copyright © 2016 Adrian Humphrey. All rights reserved.
 //
 
 import UIKit

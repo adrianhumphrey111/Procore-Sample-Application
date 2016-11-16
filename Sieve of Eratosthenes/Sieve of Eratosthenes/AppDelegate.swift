@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Sieve of Eratosthenes
 //
-//  Created by Computer Science on 11/10/16.
+//  Created by Adrian Humphrey on 11/10/16.
 //  Copyright © 2016 Adrian Humphrey. All rights reserved.
 //
 
