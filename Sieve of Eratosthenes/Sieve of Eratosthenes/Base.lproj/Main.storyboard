@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Sieve_of_Eratosthenes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,79 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8in-5S-Y11">
+                                <rect key="frame" x="66" y="187.5" width="243" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1fp-Fr-F7j"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter a Number Greater than 1 &amp; Less than 121" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-AQ-ghO">
+                                <rect key="frame" x="66" y="55" width="243" height="82.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sum-54-ef7">
+                                <rect key="frame" x="66" y="307.5" width="243" height="75"/>
+                                <color key="backgroundColor" red="0.30137418792312665" green="0.57578157841763977" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="LDM-E1-blL"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="odV-3q-2BU"/>
+                                    <segue destination="br5-jc-rOg" kind="show" identifier="Segue" id="7dn-bf-0AO"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fbL-AQ-ghO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="2dr-Ro-iS9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8in-5S-Y11" secondAttribute="trailing" constant="50" id="9vh-7e-IjF"/>
+                            <constraint firstItem="sum-54-ef7" firstAttribute="top" secondItem="8in-5S-Y11" secondAttribute="bottom" constant="20" id="LzH-B0-wGO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sum-54-ef7" secondAttribute="trailing" constant="50" id="N2h-Dw-24x"/>
+                            <constraint firstItem="sum-54-ef7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="OFp-RK-Mvf"/>
+                            <constraint firstItem="8in-5S-Y11" firstAttribute="top" secondItem="fbL-AQ-ghO" secondAttribute="bottom" constant="50" id="PIU-wZ-SL3"/>
+                            <constraint firstItem="8in-5S-Y11" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="U7f-uE-myZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fbL-AQ-ghO" secondAttribute="trailing" constant="50" id="bqy-Dt-OUx"/>
+                            <constraint firstItem="fbL-AQ-ghO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="g68-Gh-0l3"/>
+                            <constraint firstItem="8in-5S-Y11" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xsL-UO-hQJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="betweenConstraint" destination="PIU-wZ-SL3" id="5uu-Fz-nFQ"/>
+                        <outlet property="doneButton" destination="sum-54-ef7" id="uc0-kR-Q2d"/>
+                        <outlet property="mainTextField" destination="8in-5S-Y11" id="DDy-G2-tZh"/>
+                        <outlet property="mainTxtconstraintHor" destination="xsL-UO-hQJ" id="muu-iZ-jnA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-98.400000000000006" y="122.78860569715144"/>
+        </scene>
+        <!--Numbers View Controller-->
+        <scene sceneID="pjQ-DK-G3n">
+            <objects>
+                <viewController id="br5-jc-rOg" customClass="NumbersViewController" customModule="Sieve_of_Eratosthenes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AvH-64-dRw"/>
+                        <viewControllerLayoutGuide type="bottom" id="ona-8o-wrM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jst-Nn-g5H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdb-hG-POE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="129"/>
         </scene>
     </scenes>
 </document>

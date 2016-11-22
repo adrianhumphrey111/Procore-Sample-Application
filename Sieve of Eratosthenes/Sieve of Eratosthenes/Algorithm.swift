@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol AnimationDelegate :class{
-    func changeViewColor(_ tag: Int, color: UIColor)
+    func changeViewColor(_ tag: Int, color: UIColor, prime: Bool)
     
 }
 
@@ -44,14 +44,14 @@ class Algorithm{
     
     //Initialization
     init(number: Int){
-
+        
         numToCalc = number
         
         //Set up Tiemrs
         myTimer = Timer()
         myTimer2 = Timer()
         mytimer3 = Timer()
-  
+        
         //Fill color array
         fillcolorArray()
         
@@ -61,14 +61,18 @@ class Algorithm{
     func calculatePrimes(){
         
         let number = numToCalc
-        let n = findClosetRoot(number: Double(number))
+        var n = findClosetRoot(number: Double(number))
         self.n = n
+        
+        if self.n! < number {
+            n = number + 1
+        }
         
         //Check if the number is greater than 121 or less than 2
         if (number < 2) || (number > 121){
             return
         }
- 
+        
         //Temp array of integers, initializes with numbers - 1
         var array: [Int] = []
         
@@ -111,7 +115,7 @@ class Algorithm{
                         boolArr[j-2] = false
                         
                         
- 
+                        
                     }
                 }
             }
@@ -134,10 +138,10 @@ class Algorithm{
         
         //TODO: call this as soon as the user presses eneter with the number that they inputed
         self.myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(animateNonPrimes), userInfo: nil, repeats: false)
-
         
         
-       
+        
+        
     }
     
     
@@ -198,48 +202,49 @@ class Algorithm{
         //A for loop with different timers that will call animateMultiple right after one is done
         if let n = self.n{
             for i in self.intArray{
-                print(i)
-                let interval: Double = Double(timerCount * 2)
-            
-                    myTimer2 = Timer.scheduledTimer(withTimeInterval:interval, repeats: false, block: { (timer) in
-                        self.animateMultipile(i: i)
-                        
-                    })
-                timerCount+=1
-                if i == n{
-                    return
+                
+                if i >= self.n!{
+                    break
                 }
+                
+                
+                let interval: Double = Double(timerCount * 2)
+                
+                myTimer2 = Timer.scheduledTimer(withTimeInterval:interval, repeats: false, block: { (timer) in
+                    self.animateMultipile(i: i)
+                    
+                })
+                timerCount+=1
+             
+                
+                
             }
-    }
-    
-    
-   func animatesPrimes(){
-    
-    
-
-    }
-    
-    
+        }
+        
+        
+        func animatePrimes(){
+            
+            
+            
+        }
+        
+        
     }
     
     func animateMultipile(i: Int){
-        //Calculate how many multiples there are in the array
         
         //Animate the first multiple
-        delegate?.changeViewColor(i, color: self.colorArray[i - 2])
+        delegate?.changeViewColor(i, color: self.colorArray[i - 2], prime: true)
         
         //Delay for a half a second then animate every mulitple of
-   
-            for j in i...self.n! * self.n!{
+        var value: Double = 0
+        for j in i...self.n! * self.n!{
+            mytimer3 = Timer.scheduledTimer(withTimeInterval: TimeInterval(value), repeats: false, block: { (timer) in
+                self.delegate?.changeViewColor(i * j, color: self.colorArray[i - 2], prime: false)
                 
-                mytimer3 = Timer.scheduledTimer(withTimeInterval: , repeats: false, block: { (timer) in
-                    self.delegate?.changeViewColor(i * j, color: self.colorArray[i - 2])
-                    timer.invalidate()
-                })
-                
-            }
-           
-        
+            })
+            value += 0.04
+        }
         
     }
     
@@ -257,13 +262,11 @@ class Algorithm{
         
     }
     
-    
-    
 }
 
 
 /*
- 
+ Algorithm
  Input: an integer n > 1
  
  Let A be an array of Boolean values, indexed by integers 2 to n,

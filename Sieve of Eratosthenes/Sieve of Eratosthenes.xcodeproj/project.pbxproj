@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403653B81DE41DE2008D8AED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403653B71DE41DE2008D8AED /* MainViewController.swift */; };
+		403653C71DE42FE2008D8AED /* Device.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403653C11DE42F74008D8AED /* Device.framework */; };
+		403653C81DE42FE2008D8AED /* Device.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 403653C11DE42F74008D8AED /* Device.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		40FFDD0E1DD461BB00B50ED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FFDD0D1DD461BB00B50ED6 /* AppDelegate.swift */; };
-		40FFDD101DD461BB00B50ED6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FFDD0F1DD461BB00B50ED6 /* ViewController.swift */; };
+		40FFDD101DD461BB00B50ED6 /* NumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FFDD0F1DD461BB00B50ED6 /* NumbersViewController.swift */; };
 		40FFDD131DD461BB00B50ED6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FFDD111DD461BB00B50ED6 /* Main.storyboard */; };
 		40FFDD151DD461BB00B50ED6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FFDD141DD461BB00B50ED6 /* Assets.xcassets */; };
 		40FFDD181DD461BB00B50ED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FFDD161DD461BB00B50ED6 /* LaunchScreen.storyboard */; };
@@ -16,10 +19,50 @@
 		40FFDD221DD9254500B50ED6 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FFDD211DD9254500B50ED6 /* SquareView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		403653C01DE42F74008D8AED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 403653BB1DE42F73008D8AED /* Device.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8FBDE8951B5CFA1B00C78486;
+			remoteInfo = Device;
+		};
+		403653C21DE42F74008D8AED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 403653BB1DE42F73008D8AED /* Device.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8FBDE89F1B5CFA1C00C78486;
+			remoteInfo = DeviceTests;
+		};
+		403653C91DE42FE2008D8AED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 403653BB1DE42F73008D8AED /* Device.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FBDE8941B5CFA1B00C78486;
+			remoteInfo = Device;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		403653CB1DE42FE2008D8AED /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				403653C81DE42FE2008D8AED /* Device.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		403653B71DE41DE2008D8AED /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		403653BB1DE42F73008D8AED /* Device.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Device.xcodeproj; path = "../../../Downloads/Device.swift-master/Device.xcodeproj"; sourceTree = "<group>"; };
 		40FFDD0A1DD461BB00B50ED6 /* Sieve of Eratosthenes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sieve of Eratosthenes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FFDD0D1DD461BB00B50ED6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40FFDD0F1DD461BB00B50ED6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40FFDD0F1DD461BB00B50ED6 /* NumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		40FFDD121DD461BB00B50ED6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40FFDD141DD461BB00B50ED6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40FFDD171DD461BB00B50ED6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,15 +76,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				403653C71DE42FE2008D8AED /* Device.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		403653BC1DE42F73008D8AED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				403653C11DE42F74008D8AED /* Device.framework */,
+				403653C31DE42F74008D8AED /* DeviceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		40FFDD011DD461BB00B50ED6 = {
 			isa = PBXGroup;
 			children = (
+				403653BB1DE42F73008D8AED /* Device.xcodeproj */,
 				40FFDD0C1DD461BB00B50ED6 /* Sieve of Eratosthenes */,
 				40FFDD0B1DD461BB00B50ED6 /* Products */,
 			);
@@ -61,7 +115,8 @@
 				40FFDD0D1DD461BB00B50ED6 /* AppDelegate.swift */,
 				40FFDD1F1DD7DB0000B50ED6 /* Algorithm.swift */,
 				40FFDD211DD9254500B50ED6 /* SquareView.swift */,
-				40FFDD0F1DD461BB00B50ED6 /* ViewController.swift */,
+				40FFDD0F1DD461BB00B50ED6 /* NumbersViewController.swift */,
+				403653B71DE41DE2008D8AED /* MainViewController.swift */,
 				40FFDD111DD461BB00B50ED6 /* Main.storyboard */,
 				40FFDD141DD461BB00B50ED6 /* Assets.xcassets */,
 				40FFDD161DD461BB00B50ED6 /* LaunchScreen.storyboard */,
@@ -80,10 +135,12 @@
 				40FFDD061DD461BB00B50ED6 /* Sources */,
 				40FFDD071DD461BB00B50ED6 /* Frameworks */,
 				40FFDD081DD461BB00B50ED6 /* Resources */,
+				403653CB1DE42FE2008D8AED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				403653CA1DE42FE2008D8AED /* PBXTargetDependency */,
 			);
 			name = "Sieve of Eratosthenes";
 			productName = "Sieve of Eratosthenes";
@@ -118,12 +175,35 @@
 			mainGroup = 40FFDD011DD461BB00B50ED6;
 			productRefGroup = 40FFDD0B1DD461BB00B50ED6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 403653BC1DE42F73008D8AED /* Products */;
+					ProjectRef = 403653BB1DE42F73008D8AED /* Device.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				40FFDD091DD461BB00B50ED6 /* Sieve of Eratosthenes */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		403653C11DE42F74008D8AED /* Device.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Device.framework;
+			remoteRef = 403653C01DE42F74008D8AED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		403653C31DE42F74008D8AED /* DeviceTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeviceTests.xctest;
+			remoteRef = 403653C21DE42F74008D8AED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		40FFDD081DD461BB00B50ED6 /* Resources */ = {
@@ -143,14 +223,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FFDD101DD461BB00B50ED6 /* ViewController.swift in Sources */,
+				40FFDD101DD461BB00B50ED6 /* NumbersViewController.swift in Sources */,
 				40FFDD201DD7DB0000B50ED6 /* Algorithm.swift in Sources */,
 				40FFDD0E1DD461BB00B50ED6 /* AppDelegate.swift in Sources */,
 				40FFDD221DD9254500B50ED6 /* SquareView.swift in Sources */,
+				403653B81DE41DE2008D8AED /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		403653CA1DE42FE2008D8AED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Device;
+			targetProxy = 403653C91DE42FE2008D8AED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		40FFDD111DD461BB00B50ED6 /* Main.storyboard */ = {
@@ -268,9 +357,11 @@
 		40FFDD1D1DD461BB00B50ED6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S57MEAYY9V;
 				INFOPLIST_FILE = "Sieve of Eratosthenes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HumpTrump.Sieve-of-Eratosthenes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -281,9 +372,11 @@
 		40FFDD1E1DD461BB00B50ED6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S57MEAYY9V;
 				INFOPLIST_FILE = "Sieve of Eratosthenes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HumpTrump.Sieve-of-Eratosthenes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -310,6 +403,7 @@
 				40FFDD1E1DD461BB00B50ED6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

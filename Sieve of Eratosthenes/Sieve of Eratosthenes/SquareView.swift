@@ -74,11 +74,9 @@ class SquareView: UIView {
     
     //Gab color that was passed in and redraw square with this color
     func changeColor(color: UIColor){
-        
        
         self.color = color
-        print("Change color function was called, the color is now: ")
-        
+  
         //redraw view
         self.backgroundColor = color
         

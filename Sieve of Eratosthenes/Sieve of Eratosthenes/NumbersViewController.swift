@@ -9,7 +9,7 @@
 import UIKit
 import CoreGraphics
 
-class ViewController: UIViewController, AnimationDelegate {
+class NumbersViewController: UIViewController, AnimationDelegate {
     
     //textField for number input from user
     var chosenNumberTextField: UITextField!
@@ -23,15 +23,27 @@ class ViewController: UIViewController, AnimationDelegate {
     //View on the right side of the screen that will hold the prime numbers as an output
     var primeView: UIView!
     
+    //Reset Button
+    @IBOutlet weak var resetButton: UIButton!
+    
+    //TextField
+    @IBOutlet weak var primeTextField: UITextField!
+    
+    //Number passed in
+    var number: Int!
+    
+    
     //Delegate Method
-    func changeViewColor(_ tag: Int, color: UIColor){
+    func changeViewColor(_ tag: Int, color: UIColor, prime: Bool){
         
         if let view: SquareView = self.squareView.viewWithTag(tag) as! SquareView?{
             
-                 view.changeColor(color: color)
+            view.changeColor(color: color)
         
            
         }
+        
+       
         
     }
     
@@ -39,36 +51,17 @@ class ViewController: UIViewController, AnimationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
- 
+
         //initialize both views ontop of View Controller, 20px from left, 20px from top, 2/3 of screen
-        squareView = UIView(frame: CGRect(x: 10, y: 20, width: self.view.frame.size.width - 10 , height: self.view.frame.size.height - 20))
+        squareView = UIView(frame: CGRect(x: 25, y: 40, width: self.view.frame.size.width - 10 , height: self.view.frame.size.height - 20))
         
         //primeView = UIView(frame: CGRect(x: self.view.frame.width * (2/3) , y: 20, width: self.view.frame.size.width * (1/3) - 10, height: self.view.frame.size.height ))
+       
 
         
         view.addSubview(squareView)
         //view.addSubview(primeView)
         
-        layoutViews(count: 121)
-        
-        //Wait 3 second then change the color
-        let when = DispatchTime.now() + 2
-        DispatchQueue.main.asyncAfter(deadline: when){
-            //testView.changeColor(color: UIColor.red)
-        }
-        
-        
-        //Dismiss keyboard on tap around
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tapGesture)
-        
-        //Keybopard should come up as soon as view loads
-        for textField in self.view.subviews where textField is UITextField {
-            
-            //Ask user to input a number that does not exceed 121 not including 0 or one
-            textField.resignFirstResponder()
-        }
         
         //Width and height for future use, text field as well as drawing views as squares
         let width = self.view.frame.size.width
@@ -81,22 +74,15 @@ class ViewController: UIViewController, AnimationDelegate {
         chosenNumberTextField = UITextField(frame: textFieldFrame)
         chosenNumberTextField.borderStyle = .line
         
-        //Add textfield to view
-        //self.view.addSubview(chosenNumberTextField)
-        
+        //Layout the views
+        layoutViews(count: number)
         
         //Calculate primes
-        let algorithm = Algorithm(number: 121)
+        let algorithm = Algorithm(number: number)
         algorithm.delegate = self
-        
         algorithm.calculatePrimes()
         
 
-        
-        //algorithm.animateViews()
-        
-        //Once you have the prime numbers draw views and animate color synchranization
-        
     }
     
     func layoutViews(count: Int){
@@ -105,11 +91,10 @@ class ViewController: UIViewController, AnimationDelegate {
         var yindex = 0
         var xindex = 1
         //For loop from one to the number that was imported
-        for i in 1...count{
+        for i in 1...count - 1{
             //If the count goes over 10, reset x, and move the y down
             if i % 10 == 0{
-                print(i)
-                
+
                 //Add to the yindex
                 yindex+=1
                 
@@ -157,6 +142,8 @@ class ViewController: UIViewController, AnimationDelegate {
     }
 
     
+    @IBAction func resetAction(_ sender: Any) {
+    }
     
 
     override func didReceiveMemoryWarning() {
@@ -164,17 +151,7 @@ class ViewController: UIViewController, AnimationDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func hideKeyboard() {
-        view.endEditing(true)
-    }
-    
-    // For pressing return on the keyboard to dismiss keyboard
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        for textField in self.view.subviews where textField is UITextField {
-            textField.resignFirstResponder()
-        }
-        return true
-    }
+
 
 
 }
