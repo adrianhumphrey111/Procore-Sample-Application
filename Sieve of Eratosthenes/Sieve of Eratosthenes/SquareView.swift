@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Device
 
 class SquareView: UIView {
 
@@ -79,6 +80,36 @@ class SquareView: UIView {
   
         //redraw view
         self.backgroundColor = color
+        
+        
+    }
+    
+    //For the prime numbers
+    func changeFontColor(){
+        
+        let fontColor = UIColor.white
+        self.numberLabel.textColor = fontColor
+        
+    }
+    
+    func defaultView(){
+        
+        //Change color back to grey
+        self.backgroundColor = UIColor.gray
+        
+        //Change label color back to black
+        self.numberLabel.textColor = UIColor.black
+    }
+    
+    //For the prime numbers in Prime view. Need to decrease the size
+    func changeLabelSize(){
+        let deviceType = UIDevice.current.deviceType
+        
+        switch deviceType {
+        case .iPhone5: numberLabel.font = UIFont(name: "AlNile", size: 12.0)
+        case .iPhone6: numberLabel.font = UIFont(name: "AlNile", size: 15.0)
+        default: break
+        }
         
         
     }

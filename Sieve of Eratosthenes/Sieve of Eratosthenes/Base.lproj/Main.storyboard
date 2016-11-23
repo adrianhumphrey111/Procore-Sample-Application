@@ -31,7 +31,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter a Number Greater than 1 &amp; Less than 121" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-AQ-ghO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter a Number Greater than 1 &amp; Less than 121" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-AQ-ghO">
                                 <rect key="frame" x="66" y="55" width="243" height="82.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -71,6 +71,7 @@
                         <outlet property="doneButton" destination="sum-54-ef7" id="uc0-kR-Q2d"/>
                         <outlet property="mainTextField" destination="8in-5S-Y11" id="DDy-G2-tZh"/>
                         <outlet property="mainTxtconstraintHor" destination="xsL-UO-hQJ" id="muu-iZ-jnA"/>
+                        <outlet property="topLabelConstraint" destination="2dr-Ro-iS9" id="uGW-J4-bxP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -80,7 +81,7 @@
         <!--Numbers View Controller-->
         <scene sceneID="pjQ-DK-G3n">
             <objects>
-                <viewController id="br5-jc-rOg" customClass="NumbersViewController" customModule="Sieve_of_Eratosthenes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NumbersViewController" id="br5-jc-rOg" customClass="NumbersViewController" customModule="Sieve_of_Eratosthenes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AvH-64-dRw"/>
                         <viewControllerLayoutGuide type="bottom" id="ona-8o-wrM"/>
@@ -88,8 +89,49 @@
                     <view key="view" contentMode="scaleToFill" id="jst-Nn-g5H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si3-62-d8u">
+                                <rect key="frame" x="46" y="562" width="100" height="75"/>
+                                <color key="backgroundColor" red="0.30137418789999998" green="0.57578157839999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="JyP-qP-VD7"/>
+                                    <constraint firstAttribute="height" constant="75" id="i8m-T5-oDt"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fYq-sS-WU9"/>
+                                    <action selector="resetAction:" destination="br5-jc-rOg" eventType="touchUpInside" id="8EY-b0-qpA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-Rs-vNR">
+                                <rect key="frame" x="229" y="562" width="100" height="75"/>
+                                <color key="backgroundColor" red="0.30137418789999998" green="0.57578157839999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="6aC-dI-utk"/>
+                                    <constraint firstAttribute="width" constant="100" id="cW3-bl-ujq"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="replayAction:" destination="br5-jc-rOg" eventType="touchUpInside" id="3mX-Yk-GDV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ona-8o-wrM" firstAttribute="top" secondItem="mn0-Rs-vNR" secondAttribute="bottom" constant="30" id="S51-A0-YXs"/>
+                            <constraint firstItem="ona-8o-wrM" firstAttribute="top" secondItem="Si3-62-d8u" secondAttribute="bottom" constant="30" id="XDo-Lu-L1Z"/>
+                            <constraint firstItem="Si3-62-d8u" firstAttribute="leading" secondItem="jst-Nn-g5H" secondAttribute="leadingMargin" constant="30" id="hPM-ML-lQL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mn0-Rs-vNR" secondAttribute="trailing" constant="30" id="kLY-Bg-NpW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="replayButton" destination="mn0-Rs-vNR" id="yz6-co-FgX"/>
+                        <outlet property="resetButton" destination="Si3-62-d8u" id="KBi-fG-zA9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdb-hG-POE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

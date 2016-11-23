@@ -11,6 +11,8 @@ import UIKit
 
 protocol AnimationDelegate :class{
     func changeViewColor(_ tag: Int, color: UIColor, prime: Bool)
+    func setUpPrimes(_ arr: [Int])
+    func animatePrimes(_ color: UIColor, arr: [Int])
     
 }
 
@@ -37,6 +39,9 @@ class Algorithm{
     //Timer 3
     var mytimer3: Timer
     
+    //Timer 4
+    var mytimer4: Timer
+    
     //variable that will hold the squareroot of n
     var n: Int?
     
@@ -51,6 +56,7 @@ class Algorithm{
         myTimer = Timer()
         myTimer2 = Timer()
         mytimer3 = Timer()
+        mytimer4 = Timer()
         
         //Fill color array
         fillcolorArray()
@@ -136,8 +142,11 @@ class Algorithm{
         
         self.intArray = primes
         
-        //TODO: call this as soon as the user presses eneter with the number that they inputed
+        //Start the animation of squares
         self.myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(animateNonPrimes), userInfo: nil, repeats: false)
+        
+        //Layput the Primes that were calculated
+        self.delegate?.setUpPrimes(self.intArray)
         
         
         
@@ -198,10 +207,13 @@ class Algorithm{
     @objc func animateNonPrimes(){
         
         //Timer count
-        var timerCount = 0
+        var timerCount: Double = 0
         //A for loop with different timers that will call animateMultiple right after one is done
         if let n = self.n{
+            var count = 0
             for i in self.intArray{
+                
+                
                 
                 if i >= self.n!{
                     break
@@ -209,26 +221,27 @@ class Algorithm{
                 
                 
                 let interval: Double = Double(timerCount * 2)
-                
                 myTimer2 = Timer.scheduledTimer(withTimeInterval:interval, repeats: false, block: { (timer) in
                     self.animateMultipile(i: i)
                     
                 })
-                timerCount+=1
-             
                 
+                timerCount = timerCount + 1.5
                 
+                //Figure out how many times this will run
+                count+=1
+            
             }
+            
+            //Mutliply how many times the for loop ran times the interval then unhide the rest of the primes
+            let delay2: Double = Double(count) * 1.5 + 1.5
+            mytimer4 = Timer.scheduledTimer(withTimeInterval: delay2, repeats: false, block: { (timer) in
+                let primecolor: UIColor = UIColor.cyan
+                
+                self.delegate?.animatePrimes(primecolor, arr: self.intArray)
+            })
+            
         }
-        
-        
-        func animatePrimes(){
-            
-            
-            
-        }
-        
-        
     }
     
     func animateMultipile(i: Int){
@@ -243,7 +256,7 @@ class Algorithm{
                 self.delegate?.changeViewColor(i * j, color: self.colorArray[i - 2], prime: false)
                 
             })
-            value += 0.04
+            value += 0.07
         }
         
     }

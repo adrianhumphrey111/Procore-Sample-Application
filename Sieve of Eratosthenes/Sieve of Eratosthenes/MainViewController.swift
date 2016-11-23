@@ -27,6 +27,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTxtconstraintHor: NSLayoutConstraint!
     @IBOutlet weak var mainTxtconstraintVer: NSLayoutConstraint!
     
+    //Top cponstraint for label
+    @IBOutlet weak var topLabelConstraint: NSLayoutConstraint!
+    
+    
     //Number to send to next View Controller
     var numberToSend: Int!
     
@@ -43,12 +47,14 @@ class MainViewController: UIViewController {
         case .iPhone7Plus: betweenConstraint.constant = 100
         case .iPhone6: betweenConstraint.constant = 75
         case .iPhone7: betweenConstraint.constant = 75
-        default: print("Check other available cases of DeviceType")
+        case .iPhone5: topLabelConstraint.constant = 0
+           
+        default: break
         }
         
         
         //Height and Width of screen
-        let height = self.view.frame.size.height
+        let height = self.view.frame.size.height // here
         let width = self.view.frame.size.width
 
         //Set up textFrame
